@@ -1,0 +1,61 @@
+<%- include('partials/_header') %>
+<body>
+    <h1>Modificar paciente</h1>
+    <a href="/patients">See patients</a>
+    <div class="container">
+        <div class="row">
+          <div class="col-lg">
+            <% if (typeof errors !=='undefined' ) { %>
+              <% for (let i=0; i < errors.length; i++) { %>
+                <div class="alert alert-danger">
+                  <%= errors[i].msg %>
+                </div>
+                <% } %>
+                  <% } %>
+                    <form id="update_patient" method="post">
+                      <input type="hidden" name="id" value="<%= patient.id %>">
+                      <div class="row mb-4">
+                        <div class="col">
+                          <div class="form-outline">
+                            <input type="text" id="first_name" name="first_name" class="form-control"
+                              value="<%= patient.first_name %>" />
+                            <label class="form-label" for="first_name">First name</label>
+                          </div>
+                        </div>
+                        <div class="col">
+                          <div class="form-outline">
+                            <input type="text" id="last_name" name="last_name" class="form-control"
+                              value="<%=patient.last_name %>" />
+                            <label class="form-label" for="last_name">Last name</label>
+                          </div>
+                        </div>
+                      </div>
+  
+                      <div class="row mb-4">
+                        <div class="col">
+                          <div class="form-outline">
+                            <input type="tel" id="phone" name="phone" class="form-control"
+                              value="<%= patient.phone %>" />
+                            <label class="form-label" for="phone">Phone</label>
+                          </div>
+                        </div>
+                        <div class="col">
+                          <%=console.log(patient.birthday) %>
+                          <div class="form-outline">
+                            <input type="date" id="birthday" name="birthday" class="form-control"
+                              value="<%= moment( patient.birthday).format('YYYY-MM-DD') %>" />
+                            <label class="form-label" for="birthday">Cumpleaños</label>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Submit button -->
+  
+                      <button type="submit" class="btn btn-primary btn-block mb-4">Sign up</button>
+  
+                    </form>
+          </div>
+  
+  
+        </div>
+      </div>
+      <%- include('partials/_footer') %>

@@ -1,0 +1,63 @@
+<%- include('partials/_header') %>
+
+  <body>
+    <h1><%= title %></h1>
+    <a href="/patients">See patients</a>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg">
+          <% if (typeof errors !=='undefined' ) { %>
+            <% for (let i=0; i < errors.length; i++) { %>
+              <div class="alert alert-danger">
+                <%= errors[i].msg %>
+              </div>
+              <% } %>
+                <% } %>
+                  <form id="<%= id_form %>" method="post" action="<% if (id_form == "add_form") {"/patients/api"}  %>
+                   ">
+                    <div class="row mb-4">
+                      <div class="col">
+                        <div class="form-outline">
+                          <input type="text" id="first_name" name="first_name" class="form-control"
+                            value="<%= formData.first_name  || ''%>" />
+                          <label class="form-label" for="first_name">First name</label>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="form-outline">
+                          <input type="text" id="last_name" name="last_name" class="form-control"
+                            value="<%= formData.last_name  || ''%>" />
+                          <label class="form-label" for="last_name">Last name</label>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row mb-4">
+                      <div class="col">
+                        <div class="form-outline">
+                          <input type="tel" id="phone" name="phone" class="form-control"
+                            value="<%= formData.phone  || ''%>" />
+                          <label class="form-label" for="phone">Phone</label>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="form-outline">
+                          <input type="date" id="birthday" name="birthday" class="form-control"
+                            value="<%= formData.birthday  || ''%>" />
+                          <label class="form-label" for="birthday">Cumpleaños</label>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Submit button -->
+
+                    <button type="submit" class="btn btn-primary btn-block mb-4">Sign up</button>
+
+                  </form>
+        </div>
+
+
+      </div>
+    </div>
+
+
+ <%- include('partials/_footer') %>

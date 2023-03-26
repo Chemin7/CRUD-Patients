@@ -1,25 +1,40 @@
 
 
-let addOpt = document.getElementById('add')
-let updtOpt = document.getElementById('update')
-let delOpt = document.getElementById('delete');
-let form = document.querySelector('#patient-form')
-addOpt.classList.add('active')
+$("#update_patient").submit(function(event){
+    event.preventDefault()
 
-addOpt.classList.add('active')
+    var unidexed_array = $(this).serializeArray();
+    var data = {}
+    console.log("ua: ",unidexed_array)
+    $.map(unidexed_array,function(n,l) {
+        data[n['name']] = n['value']
+    })
 
-addOpt.addEventListener('click',()=>{
-    updtOpt.classList.remove('active')
-    delOpt.classList.remove('active')
-    addOpt.classList.add('active')
+    console.log(data.id)
+    let request = {
+        "url":`http://localhost:3000/patients/api/${data.id}`,
+        "method": "PUT",
+        "data":data,
+
+       /* success: function (response) {
+        
+                 alert("You will now be redirected.");
+                 window.location = "http://localhost:3000/patients";
+             
+         },*/
+    }
+    console.log(data)
+    
+    $.ajax(request).done(function(response){
+        alert("Data updated")
+        window.location = "http://localhost:3000/patients";
+    })
 })
-updtOpt.addEventListener('click',()=>{
-    addOpt.classList.remove('active')
-    delOpt.classList.remove('active')
-    updtOpt.classList.add('active')
-})
-delOpt.addEventListener('click',()=>{
-    updtOpt.classList.remove('active')
-    addOpt.classList.remove('active')
-    delOpt.classList.add('active')
-})
+
+
+document.querySelectorAll('.delete').forEach(item => {
+    item.addEventListener('click', event => {
+      axios.delete(`http://localhost:3000/patients/api/${item.dataset.id}`)
+      window.location.reload();
+    })
+  })

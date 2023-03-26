@@ -10,7 +10,7 @@ const validateResult =  async (req,res,next)=>{
         req.session.formData = req.body;
         
         res.status(403);
-        res.render('patient-form',{
+        res.render('add-patient',{
             errors:err.array(),
             formData:req.session.formData,
             patients:await prisma.patient.findMany()

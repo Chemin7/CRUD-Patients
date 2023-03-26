@@ -1,11 +1,15 @@
-main{
-    width: 90%;
-}
+
 
 form > button{
     width: 90%;
     margin: auto;
 }
+
+main{
+    width: 70%;
+    margin:auto;
+}
+
 
 #options{
     color: blue;
