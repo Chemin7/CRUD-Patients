@@ -20,15 +20,11 @@ const patientController = {
             })
             res.send(patient);
         }
-        //const formData = req.session.formData || {};
-        
-        /*res.render('patient-form', 
-        { formData,
-        patients, 
-        method:req.method});*/
+
     },
 
     postPatient: async (req,res,next)=>{
+        console.log("post Patient", req.user)
         let {first_name,last_name,phone,birthday} = req.body;
       
     

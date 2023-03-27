@@ -2,6 +2,7 @@ const axios = require('axios')
 const moment = require('moment')
 
 exports.homeRoute =async (req,res)=>{
+  
     axios.get("http://localhost:3000/patients/api")
         .then((response) =>{
             res.render('index-patient',
@@ -12,7 +13,7 @@ exports.homeRoute =async (req,res)=>{
 }
 
 exports.add_patient = (req,res)=>{
-
+  console.log(req.user)
     res.render('add-patient',
             {formData:''})
 }

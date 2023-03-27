@@ -7,6 +7,7 @@ const { check, validationResult } = require("express-validator");
 const  services = require('../services/render')
 const userController = {
     createUser : async (req, res) => {
+          
           const errors = validationResult(req);
           if (!errors.isEmpty()) {
             return res.render("register", {
