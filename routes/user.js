@@ -23,7 +23,7 @@ usersRouter.post(
   passport.authenticate('local',{
     successRedirect:'/patients',
     failureRedirect:'/login',
-    failureFlash: true
+    failureFlash: true 
   })
 );
 

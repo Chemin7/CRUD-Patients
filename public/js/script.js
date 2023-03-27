@@ -30,7 +30,12 @@ $("#update_patient").submit(function(event){
         window.location = "http://localhost:3000/patients";
     })
 })
-
+document.querySelectorAll('.update').forEach(item => {
+  item.addEventListener('click', event => {
+    axios.get(`http://localhost:3000/patients/update-patient'`)
+    window.location.reload();
+  })
+})
 
 document.querySelectorAll('.delete').forEach(item => {
     item.addEventListener('click', event => {

@@ -6,25 +6,31 @@ const moment = require('moment')
 
 const patientController = {
     getPatients: async (req,res,next)=>{
+        //console.log("id: ", req.user.id)
         
-        if (Object.keys(req.query).length === 0) {
-            const patients = await prisma.patient.findMany();
+            if(req.query.id){
+                
+                const patient =  await prisma.patient.findUnique({
+                    where: {
+                      id: req.query.id,
+                    },
+                  });
+                 
+                res.send(patient )
+            }else{
+            const patients = await prisma.patient.findMany({
+                where: {
+                  doctorId: req.params.id,
+                },
+              });
+              
             res.send(patients)
-          } else {
-            // Query parameters exist in the URL
-            const id = req.query.id;
-            const patient = await prisma.patient.findUnique({
-                where:{
-                    id
-                }
-            })
-            res.send(patient);
-        }
+            }
 
     },
 
     postPatient: async (req,res,next)=>{
-        console.log("post Patient", req.user)
+        
         let {first_name,last_name,phone,birthday} = req.body;
       
     

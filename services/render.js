@@ -2,8 +2,8 @@ const axios = require('axios')
 const moment = require('moment')
 
 exports.homeRoute =async (req,res)=>{
-  
-    axios.get("http://localhost:3000/patients/api")
+
+    axios.get(`http://localhost:3000/patients/api/${req.user.id}`)
         .then((response) =>{
             res.render('index-patient',
             {patients:response.data,
@@ -13,18 +13,20 @@ exports.homeRoute =async (req,res)=>{
 }
 
 exports.add_patient = (req,res)=>{
-  console.log(req.user)
+
     res.render('add-patient',
             {formData:''})
 }
 
 exports.update_patient = (req,res)=>{
-    axios.get(`http://localhost:3000/patients/api?id=${req.query.id}`)
+
+    axios.get(`http://localhost:3000/patients/api/${req.user.id}?id=${req.query.id}`)
         .then( (patientdata)=>{
             res.render('update-patient',{patient:patientdata.data,moment})
             
         })
         .catch(err =>{
+         
             res.send(err);
         })
 }

@@ -10,10 +10,11 @@ patientsRouter.get('/',isAuthenticated,services.homeRoute);
 
 patientsRouter.get('/add-patient',isAuthenticated,services.add_patient);
 
-patientsRouter.get('/update-patient',isAuthenticated,services.update_patient);
+patientsRouter.get('/update-patient',services.update_patient);
 
 //API
-patientsRouter.get('/api',patientController.getPatients);
+patientsRouter.get('/api/:id',patientController.getPatients);
+
 patientsRouter.post('/api',validateCreate,patientController.postPatient);
 patientsRouter.put('/api/:id',patientController.updatePatient);
 patientsRouter.delete('/api/:id',patientController.deletePatient);

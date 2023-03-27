@@ -23,6 +23,6 @@ model Patient {
   last_name String
   phone String
   birthday DateTime
-  doctorId    String?
-  doctor      User?     @relation(fields: [doctorId], references: [id])
+  doctorId    String
+  doctor      User     @relation(fields: [doctorId], references: [id])
 }
