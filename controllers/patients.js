@@ -35,7 +35,12 @@ const patientController = {
                 first_name,
                 last_name,
                 phone,
-                birthday:birthdayDate
+                birthday:birthdayDate,
+                doctor: {
+                    connect: {
+                        id: req.user.id,
+                    },
+                },
             }
         });
     
