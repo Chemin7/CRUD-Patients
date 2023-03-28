@@ -56,7 +56,6 @@ const patientController = {
     updatePatient:async(req,res,next)=>{
         let id = req.params.id;
         let  {first_name,last_name,phone,birthday} = req.body;
-        console.log(first_name,last_name,phone,birthday)
 
         birthdayDate = new Date(Date.parse(birthday)) ;
         let updatedUser = await prisma.patient.update({

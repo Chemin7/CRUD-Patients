@@ -18,5 +18,5 @@ patientsRouter.get('/update-patient',services.update_patient);
 patientsRouter.get('/api/:id',patientController.getPatients);
 
 patientsRouter.post('/api',validateCreate,patientController.postPatient);
-patientsRouter.put('/api/:id',validatePatient,handlePatient,patientController.updatePatient);
+patientsRouter.put('/api/:id',patientController.updatePatient);
 patientsRouter.delete('/api/:id',patientController.deletePatient);

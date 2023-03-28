@@ -16,12 +16,7 @@ $("#update_patient").submit(function(event){
         "method": "PUT",
         "data":data,
 
-       /* success: function (response) {
-        
-                 alert("You will now be redirected.");
-                 window.location = "http://localhost:3000/patients";
-             
-         },*/
+      
     }
     console.log(data)
     
@@ -30,6 +25,33 @@ $("#update_patient").submit(function(event){
         window.location = "http://localhost:3000/patients";
     })
 })
+
+/*
+document.querySelector('#update_patient').addEventListener('submit', async (event) => {
+  event.preventDefault();
+
+  const first_name = document.querySelector('#first_name').value;
+  const last_name = document.querySelector('#first_name').value;
+  const phone = document.querySelector('#phone').value;
+  const birthday = document.querySelector('#phone').value;
+  // Añade todos los campos que deseas actualizar
+  const patientId = document.querySelector('#patientId').value;
+  console.log("scriopt")
+  try {
+    await axios.put(`http://localhost:3000/patients/api/${patientId}`, {
+      first_name,
+      last_name,
+      phone,
+      birthday
+      // Añade todos los campos que deseas actualizar
+    });
+    alert("Data updated")
+    window.location = "http://localhost:3000/patients";
+  } catch (err) {
+    console.error(err);
+  }
+});*/
+
 document.querySelectorAll('.update').forEach(item => {
   item.addEventListener('click', event => {
     axios.get(`http://localhost:3000/patients/update-patient'`)
