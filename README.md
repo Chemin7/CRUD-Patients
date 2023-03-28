@@ -40,7 +40,7 @@ Esto creará una carpeta llamada prisma/migrations con los archivos de migració
 ### 6. Iniciar el servidor de desarrollo
 Para iniciar el servidor de desarrollo, ejecuta el siguiente comando:
 ```
-npm run dev
+npm run start
 ```
 
 Abre tu navegador y ve a http://localhost:3000 para ver la aplicación en funcionamiento.
