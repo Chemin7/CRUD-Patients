@@ -1,22 +1,24 @@
 <%- include('partials/_header') %>
   <body>
     <h1>Login</h1>
-    <% if (message) { %>
-      <p><%= message %></p>
+    <% if (message != "") { %>
+      <div class="alert alert-danger">
+        <%= message %>
+      </div>
     <% } %>
     
-      
+
       <!--Bootstrap-->
       <form action="/login" method="post">
         <!-- Email input -->
         <div class="form-outline mb-4">
-          <input type="email" id="email" name="email" class="form-control" />
+          <input type="email" id="email" name="email" class="form-control"  />
           <label class="form-label" for="email">Email address</label>
         </div>
       
         <!-- Password input -->
         <div class="form-outline mb-4">
-          <input type="password" id="password" name="password" class="form-control" />
+          <input type="password" id="password" name="password" class="form-control"  "/>
           <label class="form-label" for="password">Password</label>
         </div>
     

@@ -1,7 +1,6 @@
 const usersRouter = require("express").Router();
 const  services = require('../services/render')
-
-const { validateUserRegistration } = require("../middlewares/validation");
+const { validateUser } = require("../middlewares/validation");
 const userController = require("../controllers/user");
 const passport = require("passport");
 
@@ -13,14 +12,13 @@ usersRouter.get("/register", services.register);
 usersRouter.get("/logout",services.logout);
 
 usersRouter.post("/register",
-  validateUserRegistration,
+  validateUser,
   userController.createUser
 );
 
 
 usersRouter.post(
-  "/login",
-  passport.authenticate('local',{
+  "/login", passport.authenticate('local',{
     successRedirect:'/patients',
     failureRedirect:'/login',
     failureFlash: true 

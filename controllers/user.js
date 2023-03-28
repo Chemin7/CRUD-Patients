@@ -2,9 +2,9 @@
 const bcrypt = require("bcrypt");
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
-const passport = require("passport");
-const { check, validationResult } = require("express-validator");
-const  services = require('../services/render')
+
+const {  validationResult } = require("express-validator");
+
 const userController = {
     createUser : async (req, res) => {
           
@@ -13,6 +13,7 @@ const userController = {
             return res.render("register", {
               errors: errors.array(),
               email: req.body.email,
+              password: req.body.password
             });
           }
       

@@ -1,25 +1,41 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Register</title>
-  </head>
+<%- include('partials/_header') %>
   <body>
     <h1>Register</h1>
     <% if (typeof errors !=='undefined' ) { %>
-    <% errors.forEach(error =>{ %>
-        <p><%= error.msg %></p>
-        <% }) %>
-        <% } %>
+      <% for (let i=0; i < errors.length; i++) { %>
+        <div class="alert alert-danger">
+          <%= errors[i].msg %>
+        </div>
+      <% } %>
+    <% } %>
+
+  
+        
+
         <form action="/register" method="post">
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" value="<%= email || '' %>" required />
-        <br />
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required />
-        <br />
-        <button type="submit">Register</button>
+          <div class="row mb-4">
+            <div class="col">
+              <div class="form-outline">
+                <label lass="form-label"  for="email">Email:</label>
+                <input class="form-control" type="email" id="email" name="email" value="<%= email || '' %>" required />
+              </div>
+              
+            </div>
+            
+            <div class="col">
+              <div class="form-outline">
+                <label class="form-label" for="password">Password:</label>
+                <input class="form-control" type="password" id="password" name="password" value="<%= password || '' %>" required />
+              </div>
+            </div>
+          </div>
+
+        
+          <!-- Submit button -->
+
+          <button type="submit" class="btn btn-primary btn-block mb-4">Sign up</button>
+
         </form>
         <p>Already have an account? <a href="/login">Login</a></p>
-        
           </body>
-        </html>
+          <%- include('partials/_footer') %>

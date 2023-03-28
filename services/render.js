@@ -36,7 +36,7 @@ exports.login = (req, res) => {
   };
 
 exports.register =  (req, res) => {
-    res.render("register",{email:''});
+    res.render("register",{email:'',password:''});
   };
 
 exports.logout = (req, res, next) => {

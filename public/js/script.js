@@ -5,7 +5,7 @@ $("#update_patient").submit(function(event){
 
     var unidexed_array = $(this).serializeArray();
     var data = {}
-    console.log("ua: ",unidexed_array)
+    // console.log("ua: ",unidexed_array)
     $.map(unidexed_array,function(n,l) {
         data[n['name']] = n['value']
     })
